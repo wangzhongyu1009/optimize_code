@@ -21,7 +21,7 @@
     } else if (status == 5) {
       console.log('系统取消')
     } else {
-        console.log('other')
+      console.log('other')
     }
   }
 
@@ -76,6 +76,65 @@
     console.log(action[0]);
   }
 
+</script>
+
+<script>
+  /**
+   * 按钮点击事件
+   * @param  {Number} status    活动状态： 1.开团进行中 2.开团失败 3.商品售罄 4.开团成功 5.系统取消
+   * @param  {String} indentity 身份标识： guest游客 master主用户
+   */
+  const onButtonClick = (status, indentity) => {
+    if (indentity == 'guest') {
+      if (status == 1) {
+        console.log('开团进行中')
+      } else if (status == 2) {
+        console.log('开团失败')
+      } else if (status == 3) {
+        console.log('商品售罄')
+      } else if (status == 4) {
+        console.log('开团成功')
+      } else if (status == 5) {
+        console.log('系统取消')
+      } else {
+        console.log('other')
+      }
+    } else if (indentity == 'master') {
+      if (status == 1) {
+        console.log('开团进行中')
+      } else if (status == 2) {
+        console.log('开团失败')
+      } else if (status == 3) {
+        console.log('商品售罄')
+      } else if (status == 4) {
+        console.log('开团成功')
+      } else if (status == 5) {
+        console.log('系统取消')
+      } else {
+        console.log('other')
+      }
+    }
+  }
+
+
+  const actions = new Map([
+    ['guest_1', () => {console.log('开团进行中')}],
+    ['guest_2', () => {console.log('开团失败')}],
+    ['guest_3', () => {console.log('商品售罄')}],
+    ['guest_4', () => {console.log('开团成功')}],
+    ['guest_5', () => {console.log('系统取消')}],
+    ['master_1', () => {console.log('开团进行中')}],
+    ['master_2', () => {console.log('开团失败')}],
+    ['master_3', () => {console.log('商品售罄')}],
+    ['master_4', () => {console.log('开团成功')}],
+    ['master_5', () => {console.log('系统取消')}],
+    ['default', () => {console.log('other')}]
+  ])
+
+  const onButtonClick = (status, identity) => {
+    let action = actions.get(`${identity}_${status}`) || actions.get('default');
+    action.call(this);
+  }
 </script>
 <body>
   
