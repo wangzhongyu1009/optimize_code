@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript 复杂判断的更优雅写法</title>
+</head>
+<script>
+  /**
+   * 按钮点击事件
+   * @param  {Number} status 活动状态：1.开团进行中 2.开团失败 3.商品售罄 4.开团成功 5.系统取消
+   */
+  const onButtonClick = (status) => {
+    if (status == 1) {
+      console.log('开团进行中')
+    } else if (status == 2) {
+      console.log('开团失败')
+    } else if (status == 3) {
+      console.log('商品售罄')
+    } else if (status == 4) {
+      console.log('开团成功')
+    } else if (status == 5) {
+      console.log('系统取消')
+    } else {
+        console.log('other')
+    }
+  }
+
+  const onButtonClick = (status) => {
+    switch (status) {
+      case 1:
+        console.log('开团进行中');
+        break;
+      case 2:
+        console.log('开团失败');
+        break;
+      case 3:
+        console.log('商品售罄');
+        break;
+      case 4:
+        console.log('开团成功');
+        break;
+      case 5:
+        console.log('系统取消');
+        break;
+      default:
+        console.log('other');
+        break;
+    }
+  }
+
+
+  const actions = {
+    '1': ['开团进行中'],
+    '2': ['开团失败'],
+    '3': ['商品售罄'],
+    '4': ['开团成功'],
+    '5': ['系统取消'],
+    'default': ['other']
+  }
+  const onButtonClick = (status) => {
+    let action = actions[status] || actions['default'];
+    console.log(action[0]);
+  }
+
+
+  const actions = new Map([
+    [1, ['开团进行中']],
+    [2, ['开团失败']],
+    [3, ['商品售罄']],
+    [4, ['开团成功']],
+    [5, ['系统取消']],
+    ['default', ['other']]
+  ])
+  const onButtonClick = (status) => {
+    let action = actions.get(status) || actions.get('default');
+    console.log(action[0]);
+  }
+
+</script>
+<body>
+  
+</body>
+</html>
